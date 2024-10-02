@@ -9,11 +9,11 @@ def main():
     data = pd.read_csv('lab_2/10_Гостиницы Чикаго CMAHS Average Daily Rate/Chicago_hotels.csv', delimiter=';')
     
     # Очистка данных: замена запятых на точки и удаление пробелов
-    data['x2'] = data['x2'].str.replace(',', '.').str.strip()
+    data['x4'] = data['x4'].str.replace(',', '.').str.strip()
 
     # Преобразование в числовой формат и пропуск некорректных значений
-    data['x2'] = pd.to_numeric(data['x2'], errors='coerce')
-    data = data.dropna(subset=['x2'])  # Удаление строк с NaN
+    data['x4'] = pd.to_numeric(data['x4'], errors='coerce')
+    data = data.dropna(subset=['x4'])  # Удаление строк с NaN
 
     # Подготовка временного ряда
     start_date = '1994-01'
@@ -23,7 +23,7 @@ def main():
     data['date'] = end_date
     data.set_index('date', inplace=True)
 
-    time_series = data['x2']
+    time_series = data['x4']
 
     # Построение графика исходного временного ряда
     plt.figure(figsize=(12, 6))
